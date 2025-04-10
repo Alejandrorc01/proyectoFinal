@@ -3,149 +3,243 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Playstation 5 Slim</title>
-    <link rel="stylesheet" href="style.css" />
-     <!-- iconos de redes -->
+    <title>PixelTec</title>
+
+    <!-- Bootstrap primero -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Iconos FontAwesome -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
       crossorigin="anonymous"
     />
-     <!-- Importar la fuente Montserrat desde Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- favicon -->
-     <link rel="shortcut icon" href="imagenesindex/logo.PNG" type="image/x-icon">
-    </head>
+
+    <!-- Fuente Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tu estilo personalizado (después de Bootstrap para sobreescribirlo) -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="imagenesindex/logo.PNG"
+      type="image/x-icon"
+    />
+  </head>
   <body>
-       <!-- cabecera de la página -->
-       <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navegacion" data-bs-theme="dark" >
-            <div class="container-fluid">
-              <a class="navbar-brand titulo" href="index.html">PixelTec</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!-- cabecera de la página -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary navegacion"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand titulo" href="index.html">PixelTec</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active link"
+                  aria-current="page"
+                  href="index.html"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="consolas.html">Consolas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="videojuegos.html">Videojuegos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Reservas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Ofertas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Otros</a>
+              </li>
+              <button
+                id="modo-toggle"
+                class="btn btn-sm btn-outline-secondary ms-3"
+              >
+                Modo Oscuro
               </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active link" aria-current="page" href="index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="consolas.html">Consolas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="videojuegos.html">Videojuegos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Reservas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Ofertas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Otros</a>
-                  </li>
-                </ul>
-                <!-- barra de búsqueda -->
-                <form class="d-flex barrabusq" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Escribe un producto" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                  </form>
-                  <!-- carro de compra -->
-                  <div><a class="carrito" href="">
-                  <img src="imagenesindex/cart-shopping-solid (1).svg" alt=""></a></div>
-              </div>
+            </ul>
+            <!-- barra de búsqueda -->
+            <form class="d-flex barrabusq" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Escribe un producto"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-azul" type="submit">Buscar</button>
+            </form>
+            <!-- carro de compra -->
+            <div>
+              <a class="carrito" href="#">
+                <i class="fas fa-shopping-cart"></i>
+              </a>
             </div>
-          </nav>
+          </div>
+        </div>
+      </nav>
     </header>
 
-
-<main>
-
-    <div class="container mt-5">
+    <main>
+      <div class="container mt-5">
         <div class="row">
-            <div class="col-md-6">
-                <img src="imagenesindex/ASSET_MMS_134330132.webp" class="img-fluid" alt="PlayStation 5">
+          <div class="col-md-6">
+            <img
+              src="imagenesindex/ASSET_MMS_134330132.webp"
+              class="img-fluid"
+              alt="PlayStation 5"
+            />
+          </div>
+          <div class="col-md-6">
+            <h2>PlayStation 5 Slim</h2>
+            <p><strong>Precio:</strong> 499.99€</p>
+            <p><strong>Plataforma:</strong> PS5</p>
+            <!-- Valoración -->
+            <div class="mb-3">
+              <label for="valoracion" class="form-label">Valoración:</label>
+              <select
+                class="form-select"
+                aria-label="Valoración"
+                id="valoracion"
+              >
+                <option selected>Selecciona una opción</option>
+                <option>⭐⭐⭐⭐⭐</option>
+                <option>⭐⭐⭐⭐</option>
+                <option>⭐⭐⭐</option>
+                <option>⭐⭐</option>
+                <option>⭐</option>
+              </select>
             </div>
-            <div class="col-md-6">
-                <h2>PlayStation 5 Slim</h2>
-                <p><strong>Precio:</strong> 499.99€</p>
-                <p><strong>Plataforma:</strong> PS5</p>
-                <!-- Valoración -->
-                <div class="mb-3">
-                    <label for="valoracion" class="form-label">Valoración:</label>
-                    <select class="form-select " aria-label="Valoración" id="valoracion">
-                       <option selected>Selecciona una opción</option>
-                            <option>⭐⭐⭐⭐⭐</option>
-                            <option>⭐⭐⭐⭐</option>
-                            <option>⭐⭐⭐</option>
-                            <option>⭐⭐</option>
-                            <option>⭐</option>
-                    </select>
-                </div>
-                <!-- Botones -->
-                <button type="button" class="btn btn-success">Comprar</button>
-                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#masInfoModal">Más Información</button>
-            </div>
+            <!-- Botones -->
+            <button type="button" class="btn btn-success">Comprar</button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              data-bs-toggle="modal"
+              data-bs-target="#masInfoModal"
+            >
+              Más Información
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Modal para más info -->
-    <div class="modal fade" id="masInfoModal" tabindex="-1" aria-labelledby="masInfoModalLabel" aria-hidden="true">
+      <!-- Modal para más info -->
+      <div
+        class="modal fade"
+        id="masInfoModal"
+        tabindex="-1"
+        aria-labelledby="masInfoModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="masInfoModalLabel">Más Información - PlayStation 5 Slim</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Contenido del modal -->
-                    <p>La PlayStation 5 Slim es la última consola de videojuegos de Sony, ofreciendo una experiencia de juego de próxima generación con gráficos impresionantes y un rendimiento excepcional.</p>
-                    <p>Características destacadas:</p>
-                    <ul>
-                        <li>Gráficos 4K</li>
-                        <li>Compatibilidad con juegos de PlayStation 4</li>
-                        <li>Controlador DualSense</li>
-                        <li>SSD ultra rápido</li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="masInfoModalLabel">
+                Más Información - PlayStation 5 Slim
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
+            <div class="modal-body">
+              <!-- Contenido del modal -->
+              <p>
+                La PlayStation 5 Slim es la última consola de videojuegos de
+                Sony, ofreciendo una experiencia de juego de próxima generación
+                con gráficos impresionantes y un rendimiento excepcional.
+              </p>
+              <p>Características destacadas:</p>
+              <ul>
+                <li>Gráficos 4K</li>
+                <li>Compatibilidad con juegos de PlayStation 4</li>
+                <li>Controlador DualSense</li>
+                <li>SSD ultra rápido</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Sección de reseñas -->
-    <div class="container mt-5">
+      <!-- Sección de reseñas -->
+      <div class="container mt-5">
         <h3>Reseñas de Clientes</h3>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title h5reseñas">Excelente Consola</h5>
-                        <p class="card-text">La PS5 es una excelente consola con un rendimiento impresionante. Los gráficos son increíbles y el control DualSense agrega una nueva dimensión a la jugabilidad.</p>
-                        <p class="card-text estrellas"><small class="text-muted">⭐⭐⭐⭐⭐</small></p>
-                    </div>
-                </div>
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title h5reseñas">Excelente Consola</h5>
+                <p class="card-text">
+                  La PS5 es una excelente consola con un rendimiento
+                  impresionante. Los gráficos son increíbles y el control
+                  DualSense agrega una nueva dimensión a la jugabilidad.
+                </p>
+                <p class="card-text estrellas">
+                  <small class="text-muted">⭐⭐⭐⭐⭐</small>
+                </p>
+              </div>
             </div>
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title h5reseñas">Fantástica Consola</h5>
-                        <p class="card-text">La PS5 superó todas mis expectativas. Estoy impresionado con la velocidad de carga y la calidad de los gráficos. Definitivamente recomendaría esta consola a cualquier jugador.</p>
-                        <p class="card-text estrellas"><small class="text-muted"> ⭐⭐⭐⭐</small></p>
-                    </div>
-                </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title h5reseñas">Fantástica Consola</h5>
+                <p class="card-text">
+                  La PS5 superó todas mis expectativas. Estoy impresionado con
+                  la velocidad de carga y la calidad de los gráficos.
+                  Definitivamente recomendaría esta consola a cualquier jugador.
+                </p>
+                <p class="card-text estrellas">
+                  <small class="text-muted"> ⭐⭐⭐⭐</small>
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
+    </main>
 
-
-    
-</main>
-
-    
     <!-- footer -->
     <div class="container my-3">
       <footer class="text-center text-white" style="background-color: #198754">
@@ -187,50 +281,52 @@
                   <a href="#" class="text-white">Contacto</a>
                 </h6>
               </div>
-          
             </div>
-    
           </section>
-    
-    
+
           <hr class="my-2" />
-    
-     
+
           <!-- redes -->
-       
+
           <div class="container d-flex justify-content-center py-3">
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-floating mx-2 redes"
+            >
               <i class="fab fa-facebook-f"></i>
             </button>
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-floating mx-2 redes"
+            >
               <i class="fab fa-youtube"></i>
             </button>
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-floating mx-2 redes"
+            >
               <i class="fab fa-instagram"></i>
             </button>
-            <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-floating mx-2 redes"
+            >
               <i class="fab fa-twitter"></i>
             </button>
           </div>
         </div>
-        <div
-             class="text-center p-3" style="background-color: #000000">
+        <div class="text-center p-3" style="background-color: #000000">
           © 2024 Copyright:
-          <a class="text-white" >PixelTec</a>
+          <a class="text-white">PixelTec</a>
         </div>
       </footer>
-    </div>
-    </div>
-      </body>
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous"
-      />
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
       ></script>
-    </html
+      <!--   enlace a scripts -->
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>

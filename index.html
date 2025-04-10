@@ -4,168 +4,291 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PixelTec</title>
-    <link rel="stylesheet" href="style.css">
-     <!-- iconos de redes -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-   <!-- Importar la fuente Montserrat desde Google Fonts -->
-   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- favicon -->
-  <link rel="shortcut icon" href="imagenesindex/logo.PNG" type="image/x-icon">
+
+    <!-- Bootstrap primero -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Iconos FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- Fuente Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tu estilo personalizado (después de Bootstrap para sobreescribirlo) -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="imagenesindex/logo.PNG"
+      type="image/x-icon"
+    />
   </head>
   <body>
-   
-
-        <!-- cabecera de la página -->
+    <!-- cabecera de la página -->
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navegacion" data-bs-theme="dark" >
-            <div class="container-fluid">
-              <a class="navbar-brand titulo" href="index.html">PixelTec</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary navegacion"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand titulo" href="index.html">PixelTec</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active link"
+                  aria-current="page"
+                  href="index.html"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="consolas.html">Consolas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="videojuegos.html">Videojuegos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Reservas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Ofertas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link link" href="#">Otros</a>
+              </li>
+              <!-- Botón modo oscuro -->
+              <button
+                id="modo-toggle"
+                class="btn btn-sm btn-outline-secondary ms-3"
+              >
+                Modo Oscuro
               </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active link" aria-current="page" href="index.html">Inicio</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="consolas.html">Consolas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="videojuegos.html">Videojuegos</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Reservas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Ofertas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link" href="#">Otros</a>
-                  </li>
-                </ul>
-                <!-- barra de búsqueda -->
-                <form class="d-flex barrabusq" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Escribe un producto" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                  </form>
-                  <!-- carro de compra -->
-                  <div><a class="carrito" href="">
-                  <img src="imagenesindex/cart-shopping-solid (1).svg" alt=""></a></div>
-              </div>
+            </ul>
+            <!-- barra de búsqueda -->
+            <form class="d-flex barrabusq" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Escribe un producto"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-azul" type="submit">Buscar</button>
+            </form>
+            <!-- carro de compra -->
+            <div>
+              <a class="carrito" href="#">
+                <i class="fas fa-shopping-cart"></i>
+              </a>
             </div>
-          </nav>
+          </div>
+        </div>
+      </nav>
     </header>
 
- <div class="contenedorgeneral">
+    <div class="contenedorgeneral">
+      <br />
 
-    
-<br>
-<main>
-<!-- reservas -->
-  <h1>RESERVA TU JUEGO</h1>
- 
-        <div class="row justify-content-center">
-      
-          <div class="col-sm-12 col-lg-4 p-3" >
-            <div class="card" style="height: 100%;">
-              <div class="card-body">
-                <img class="mariotarjeta" src="imagenesindex/227154.png" alt="" srcset="">
-                <br><br>
-                <h5 class="card-title">TOPSPIN 24</h5>
-                <p class="card-text textotarjetas">Disfruta del máximo nivel de competición del tenis profesional</p>
-                <p class="card-text textotarjetas">69.99€ </p>
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="btn btn-success">Resérvalo ya</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-lg-4 p-3" >
-            <div class="card" style="height: 100%;">
-              <div class="card-body">
-                <img class="mariotarjeta" src="imagenesindex/228962.png" alt="" srcset="">
-                <br><br>
-                <h5 class="card-title">MOTOGP 24</h5>
-                <p class="card-text textotarjetas">Súbete a tu moto corre en los circuitos y conviértete en campeón</p>
-                <p class="card-text textotarjetas">69.99€ </p>
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="btn btn-success">Resérvalo ya</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-lg-4 p-3">
-            <div class="card" style="height: 100%;">
-              <div class="card-body">
-                <img class="mariotarjeta" src="imagenesindex/230443.png" alt="" srcset="">
-                <br><br>
-                <h5 class="card-title">KINGDOM COME DELIVERANCE II</h5>
-                <p class="card-text textotarjetas">Siente el choque del acero y el combate visceral</p>
-                <p class="card-text textotarjetas">69.99€ </p>
-                <div class="d-flex justify-content-center">
-                  <a href="#" class="btn btn-success">Resérvalo ya</a>
-                </div>
+      <!-- reservas -->
+      <h1>RESERVA TU JUEGO</h1>
+
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-lg-4 p-3">
+          <div class="card" style="height: 100%">
+            <div class="card-body">
+              <img
+                class="mariotarjeta"
+                src="imagenesindex/227154.png"
+                alt=""
+                srcset=""
+              />
+              <br /><br />
+              <h5 class="card-title">TOPSPIN 24</h5>
+              <p class="card-text textotarjetas">
+                Disfruta del máximo nivel de competición del tenis profesional
+              </p>
+              <p class="card-text textotarjetas">69.99€</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-success">Resérvalo ya</a>
               </div>
             </div>
           </div>
         </div>
-        <!-- Banner de ofertas -->
-        <div id="banner" class="alert alert-warning fade show text-center border border-white" role="alert" style="background-color: #198754; color: #fff;">
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          <h4 class="alert-heading">¡No te pierdas nuestra mejor oferta semanal!</h4>
-          <p class="mb-0">¡Descuento de un <strong>20%</strong> en la PS5 Slim!</p>
+        <div class="col-sm-12 col-lg-4 p-3">
+          <div class="card" style="height: 100%">
+            <div class="card-body">
+              <img
+                class="mariotarjeta"
+                src="imagenesindex/228962.png"
+                alt=""
+                srcset=""
+              />
+              <br /><br />
+              <h5 class="card-title">MOTOGP 24</h5>
+              <p class="card-text textotarjetas">
+                Súbete a tu moto corre en los circuitos y conviértete en campeón
+              </p>
+              <p class="card-text textotarjetas">69.99€</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-success">Resérvalo ya</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-4 p-3">
+          <div class="card" style="height: 100%">
+            <div class="card-body">
+              <img
+                class="mariotarjeta"
+                src="imagenesindex/230443.png"
+                alt=""
+                srcset=""
+              />
+              <br /><br />
+              <h5 class="card-title">KINGDOM COME DELIVERANCE II</h5>
+              <p class="card-text textotarjetas">
+                Siente el choque del acero y el combate visceral
+              </p>
+              <p class="card-text textotarjetas">69.99€</p>
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-success">Resérvalo ya</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-<br><br>
-    <div class="container">
+      <!-- Banner de ofertas -->
+      <div
+        id="banner"
+        class="alert alert-warning fade show text-center border border-white"
+        role="alert"
+        style="background-color: #198754; color: #fff"
+      >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+        <h4 class="alert-heading">
+          ¡No te pierdas nuestra mejor oferta semanal!
+        </h4>
+        <p class="mb-0">
+          ¡Descuento de un <strong>20%</strong> en la PS5 Slim!
+        </p>
+      </div>
+      <br /><br />
+      <div class="container">
         <!-- Carrusel con oferta semanal -->
 
         <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                src="imagenesindex/PS5-Slim-Hero-3.webp"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption">
+                <h5><a href="ps5.html" id="compralaya">Cómprala ya!</a></h5>
+                <p class="precio">NUEVO PRECIO: 499.99€</p>
+              </div>
             </div>
-            <div class="carousel-inner">
-                
-                <div class="carousel-item active ">
-                    <img src="imagenesindex/PS5-Slim-Hero-3.webp" class="d-block w-100" alt="...">
-                    <div class="carousel-caption">
-                        <h5><a href="ps5.html" id="compralaya">Cómprala ya!</a></h5>
-                        <p class="precio">NUEVO PRECIO: 499.99€</p>
-                    </div>
-                </div>
-                <div class="carousel-item ">
-                    <img src="imagenesindex/303490_00_3.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption">
-                        <h5><a href="ps5.html" id="compralaya">Cómprala ya!</a></h5>
-                        
-                    </div>
-                </div>
-               
+            <div class="carousel-item">
+              <img
+                src="imagenesindex/303490_00_3.jpg"
+                class="d-block w-100"
+                alt="..."
+              />
+              <div class="carousel-caption">
+                <h5><a href="ps5.html" id="compralaya">Cómprala ya!</a></h5>
+              </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-<br><br>
+        <br /><br />
 
-<!-- novedades -->
-<h1>NOVEDADES EN VIDEOJUEGOS</h1>
+        <!-- novedades -->
+        <h1>NOVEDADES EN VIDEOJUEGOS</h1>
 
         <div class="row justify-content-center">
-          <div class="col-sm-12 col-lg-6  mb-3 mb-sm-0 py-3">
-            <div class="card" style="height: 100%;">
+          <div class="col-sm-12 col-lg-6 mb-3 mb-sm-0 py-3">
+            <div class="card" style="height: 100%">
               <div class="card-body">
-                <img class="f1tarjeta" src="imagenesindex/1124-ea-sports-f1-2024-ps5.webp" alt="">
-               <br><br>
+                <img
+                  class="f1tarjeta"
+                  src="imagenesindex/1124-ea-sports-f1-2024-ps5.webp"
+                  alt=""
+                />
+                <br /><br />
                 <h5 class="card-title">F1 24</h5>
-                <p class="card-text textotarjetas">Apura la frenada con el videojuego oficial de la FIA 2024</p>
+                <p class="card-text textotarjetas">
+                  Apura la frenada con el videojuego oficial de la FIA 2024
+                </p>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="btn btn-success">Compralo ya</a>
                 </div>
@@ -173,12 +296,19 @@
             </div>
           </div>
           <div class="col-sm-12 col-lg-6 py-3">
-            <div class="card " style="height: 100%;">
+            <div class="card" style="height: 100%">
               <div class="card-body">
-                <img class="mariotarjeta" src="imagenesindex/81fKbEWOwzL.jpg" alt="" srcset="">
-                <br><br>
-                <h5 class="card-title ">PAPER MARIO LA PUERTA MILENARIA</h5>
-                <p class="card-text textotarjetas">Comienza la búsqueda de los cristales estelares con Mario</p>
+                <img
+                  class="mariotarjeta"
+                  src="imagenesindex/81fKbEWOwzL.jpg"
+                  alt=""
+                  srcset=""
+                />
+                <br /><br />
+                <h5 class="card-title">PAPER MARIO LA PUERTA MILENARIA</h5>
+                <p class="card-text textotarjetas">
+                  Comienza la búsqueda de los cristales estelares con Mario
+                </p>
                 <div class="d-flex justify-content-center">
                   <a href="#" class="btn btn-success">Compralo ya</a>
                 </div>
@@ -187,96 +317,99 @@
           </div>
         </div>
 
+        <div class="container my-3">
+          <footer
+            class="text-center text-white"
+            style="background-color: #198754"
+          >
+            <div class="container">
+              <section class="mt-5">
+                <div class="row text-center d-flex justify-content-center pt-5">
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="index.html" class="text-white">Inicio</a>
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="consolas.html" class="text-white">Consolas</a>
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="videojuegos.html" class="text-white"
+                        >Videojuegos</a
+                      >
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#" class="text-white">Reservas</a>
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#" class="text-white">Ofertas</a>
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#" class="text-white">Otros</a>
+                    </h6>
+                  </div>
+                  <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#" class="text-white">Contacto</a>
+                    </h6>
+                  </div>
+                </div>
+              </section>
 
-</main>
+              <hr class="my-2" />
 
+              <!-- redes -->
 
-
-
-<div class="container my-3">
-  <footer class="text-center text-white" style="background-color: #198754">
-    <div class="container">
-      <section class="mt-5">
-        <div class="row text-center d-flex justify-content-center pt-5">
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="index.html" class="text-white">Inicio</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="consolas.html" class="text-white">Consolas</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="videojuegos.html" class="text-white">Videojuegos</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#" class="text-white">Reservas</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#" class="text-white">Ofertas</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#" class="text-white">Otros</a>
-            </h6>
-          </div>
-          <div class="col-md-2">
-            <h6 class="text-uppercase font-weight-bold">
-              <a href="#" class="text-white">Contacto</a>
-            </h6>
-          </div>
-      
+              <div class="container d-flex justify-content-center py-3">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg btn-floating mx-2 redes"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg btn-floating mx-2 redes"
+                >
+                  <i class="fab fa-youtube"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg btn-floating mx-2 redes"
+                >
+                  <i class="fab fa-instagram"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg btn-floating mx-2 redes"
+                >
+                  <i class="fab fa-twitter"></i>
+                </button>
+              </div>
+            </div>
+            <div class="text-center p-3" style="background-color: #000000">
+              © 2024 Copyright:
+              <a class="text-white">PixelTec</a>
+            </div>
+          </footer>
+          <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+          ></script>
+          <!--   enlace a scripts -->
+          <script src="script.js"></script>
         </div>
-
-      </section>
-
-
-      <hr class="my-2" />
-
- 
-      <!-- redes -->
-   
-      <div class="container d-flex justify-content-center py-3">
-        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
-          <i class="fab fa-facebook-f"></i>
-        </button>
-        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
-          <i class="fab fa-youtube"></i>
-        </button>
-        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
-          <i class="fab fa-instagram"></i>
-        </button>
-        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2 redes" >
-          <i class="fab fa-twitter"></i>
-        </button>
       </div>
     </div>
-    <div
-         class="text-center p-3" style="background-color: #000000">
-      © 2024 Copyright:
-      <a class="text-white" >PixelTec</a>
-    </div>
-  </footer>
-</div>
-</div>
   </body>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"
-  ></script>
-</html
+</html>
