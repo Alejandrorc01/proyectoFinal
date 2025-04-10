@@ -146,6 +146,24 @@ footer {
   font-size: 20px !important;
 }
 
+.footer-azul {
+    background-color: var(--primary-color) !important;
+    color: white;
+  }
+  .footer-azul a {
+    color: white;
+    text-decoration: none;
+  }
+  .footer-azul a:hover {
+    text-decoration: underline;
+    color: #cce5ff;
+  }
+  
+  body.dark-mode .footer-azul {
+    background-color: #121318;
+  }
+  
+
 /* footer enlaces */
 
 .h6footer:hover {
@@ -220,9 +238,14 @@ footer {
 /*cambios en tarjetas*/
 .card {
  
-  color: #ffffff;
+ 
   border: 1px solid #00bcd4;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  
 }
 
 .card:hover {
