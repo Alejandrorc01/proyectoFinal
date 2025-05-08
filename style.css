@@ -1,0 +1,301 @@
+/*predeterminado*/
+:root {
+    --primary-color: #0d6efd;
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-bg: #f8f9fa;
+  }
+
+  /*modo oscuro*/
+
+  body.dark-mode {
+    --background-color: #1e1f26;
+    --text-color: #dddddd;
+    --card-bg: #2c2f36;
+  }
+  
+  body.dark-mode .card {
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
+  }
+
+
+  body,
+  html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+.contenedorgeneral {
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: #959d993b;
+}
+
+.titulo {
+  font-size: 35px !important;
+}
+
+/* fuente */
+
+@font-face {
+  font-family: "Octosquares";
+  src: url(fuentes/TT\ Octosquares\ Trial\ Medium.ttf);
+}
+
+@font-face {
+  font-family: "game";
+  src: url(fuentes/1up.ttf);
+}
+
+/* declaro el color verde que uso en toda la página */
+
+:root {
+  --primary-color: #00bcd4;
+}
+
+/* Añado fuente */
+
+header {
+  font-family: "Octosquares";
+}
+
+h4,
+h5 {
+  font-family: "Octosquares" !important;
+}
+
+.link:hover {
+  color: var(--primary-color) !important;
+  font-family: "Octosquares" !important;
+}
+
+.titulo {
+  color: var(--primary-color) !important;
+  font-family: "game" !important;
+}
+
+/* ajusto los colores del carrusel y el banner  */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--primary-color) !important;
+}
+.alert.alert-warning {
+  background-color: var(--primary-color) !important;
+  color: #fff;
+  border-color: #fff;
+}
+
+#carouselExampleCaptions {
+  max-width: 600px;
+  margin: auto;
+}
+
+.carousel {
+  border: 2px solid rgba(124, 191, 160, 0.356);
+}
+
+/* modifico la posición de la barra de búsqueda y su botón */
+
+.barrabusq {
+  padding-right: 1% !important;
+}
+
+.precio {
+  font-size: 18px;
+  margin-top: 10px;
+  color: black;
+}
+
+#compralaya {
+  margin-top: 50%;
+  color: var(--primary-color) !important;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Octosquares";
+}
+
+h5 {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* modifico las tarjetas de videojuegos */
+
+.f1tarjeta {
+  width: 68%;
+  margin-left: 18% !important;
+}
+
+.mariotarjeta {
+  width: 42%;
+  margin-left: 30% !important;
+}
+
+.textotarjetas {
+  font-size: 20px;
+  text-align: center;
+}
+
+footer {
+  font-size: 20px !important;
+}
+
+.footer-azul {
+    background-color: var(--primary-color) !important;
+    color: white;
+  }
+  .footer-azul a {
+    color: white;
+    text-decoration: none;
+  }
+  .footer-azul a:hover {
+    text-decoration: underline;
+    color: #cce5ff;
+  }
+  
+  body.dark-mode .footer-azul {
+    background-color: #121318;
+  }
+  
+
+/* footer enlaces */
+
+.h6footer:hover {
+  color: black;
+}
+
+/* color botones de redes en el footer */
+
+.redes {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.redes:hover {
+  background-color: black !important;
+}
+
+/* estrellas de valoración */
+
+.estrellas {
+  color: rgb(131, 131, 19) !important;
+}
+
+/* reseñas de producto */
+
+.h5reseñas {
+  color: var(--primary-color) !important;
+}
+
+/* aquí cambio a verde la barra de filtro de precio */
+
+.custom-range-green::-webkit-slider-thumb {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.custom-range-green::-moz-range-thumb {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.custom-range-green::-ms-thumb {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* botones de numeración de página */
+
+.botonesnum {
+  display: flex !important;
+  margin-left: 10%;
+}
+
+/* botones de paginación */
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.btn-toolbar .btn-outline-secondary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-toolbar .btn-outline-secondary.active,
+.btn-toolbar .btn-outline-secondary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/*cambios en tarjetas*/
+.card {
+ 
+ 
+  border: 1px solid #00bcd4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  
+    background-color: var(--card-bg);
+    color: var(--text-color);
+  
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px #00bcd4;
+}
+
+/*cambios en botones*/
+
+.btn-success {
+  background-color: #00bcd4 !important;
+  border-color: #00bcd4 !important;
+}
+
+.btn-success:hover {
+  background-color: #0097a7 !important;
+  border-color: #0097a7 !important;
+}
+
+/*cambios en el carrusel y el banner*/
+
+.alert.alert-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+}
+.carousel {
+  border: 2px solid #00bcd4;
+}
+
+/*carrito*/
+
+.carrito i {
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 12px;
+}
+
+.carrito i:hover {
+  color: var(--primary-color);
+}
+
+/*busqueda*/
+
+.btn-outline-azul {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-outline-azul:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
