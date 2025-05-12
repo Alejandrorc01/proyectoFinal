@@ -21,12 +21,10 @@ if ($plataforma && $plataforma !== 'Todas') {
     $where .= " AND plataforma = :plataforma";
     $params[':plataforma'] = $plataforma;
 }
-
 if ($estado && $estado !== 'Todos') {
     $where .= " AND estado = :estado";
     $params[':estado'] = $estado;
 }
-
 if (is_numeric($precioMax)) {
     $where .= " AND precio <= :precio";
     $params[':precio'] = $precioMax;
@@ -39,8 +37,7 @@ $totalProductos = $totalStmt->fetchColumn();
 $totalPaginas = ceil($totalProductos / $productosPorPagina);
 
 // Productos paginados
-$query = "SELECT * FROM productos WHERE $where LIMIT :inicio, :cantidad";
-$stmt = $pdo->prepare($query);
+$stmt = $pdo->prepare("SELECT * FROM productos WHERE $where LIMIT :inicio, :cantidad");
 foreach ($params as $key => $val) {
     $stmt->bindValue($key, $val);
 }
@@ -73,6 +70,7 @@ $productos = $stmt->fetchAll();
             <option <?= $estado === '' || $estado === 'Todos' ? 'selected' : '' ?>>Todos</option>
             <option <?= $estado === 'Nuevo' ? 'selected' : '' ?>>Nuevo</option>
             <option <?= $estado === 'Seminuevo' ? 'selected' : '' ?>>Seminuevo</option>
+            <option <?= $estado === 'Usado' ? 'selected' : '' ?>>Usado</option>
           </select>
         </div>
 
@@ -99,7 +97,7 @@ $productos = $stmt->fetchAll();
                 <div class="card-body d-flex flex-column">
                   <h5 class="card-title"><?= $producto['nombre'] ?></h5>
                   <p class="card-text"><?= number_format($producto['precio'], 2) ?> €</p>
-                  <form action="carrito.php" method="POST" class="mt-auto">
+                  <form action="agregar_carrito.php" method="POST" class="mt-auto">
                     <input type="hidden" name="id" value="<?= $producto['id'] ?>">
                     <button type="submit" class="btn btn-success btn-sm">Comprar</button>
                   </form>

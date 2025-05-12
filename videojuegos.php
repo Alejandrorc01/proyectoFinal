@@ -3,8 +3,6 @@ session_start();
 include("includes/header.php");
 include("includes/db.php");
 
-
-
 // Configuración de paginación
 $productosPorPagina = 6;
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -23,26 +21,23 @@ if ($genero && $genero !== 'Todos') {
     $where .= " AND genero = :genero";
     $params[':genero'] = $genero;
 }
-
 if ($plataforma && $plataforma !== 'Todas') {
     $where .= " AND plataforma = :plataforma";
     $params[':plataforma'] = $plataforma;
 }
-
 if (is_numeric($precioMax)) {
     $where .= " AND precio <= :precio";
     $params[':precio'] = $precioMax;
 }
 
-// Total de productos
+// Total productos
 $totalStmt = $pdo->prepare("SELECT COUNT(*) FROM productos WHERE $where");
 $totalStmt->execute($params);
 $totalProductos = $totalStmt->fetchColumn();
 $totalPaginas = ceil($totalProductos / $productosPorPagina);
 
-// Productos para esta página
-$query = "SELECT * FROM productos WHERE $where LIMIT :inicio, :cantidad";
-$stmt = $pdo->prepare($query);
+// Productos paginados
+$stmt = $pdo->prepare("SELECT * FROM productos WHERE $where LIMIT :inicio, :cantidad");
 foreach ($params as $key => $val) {
     $stmt->bindValue($key, $val);
 }
@@ -57,7 +52,6 @@ $productos = $stmt->fetchAll();
     <!-- Filtros -->
     <div class="col-md-4">
       <h3>Filtrar por:</h3>
-      <!-- ✅ action="" envía a la misma URL correctamente -->
       <form method="GET" action="" class="border p-3 rounded bg-light">
         <div class="mb-3">
           <label for="genero" class="form-label">Género:</label>
@@ -104,7 +98,7 @@ $productos = $stmt->fetchAll();
                 <div class="card-body d-flex flex-column">
                   <h5 class="card-title"><?= $producto['nombre'] ?></h5>
                   <p class="card-text"><?= number_format($producto['precio'], 2) ?> €</p>
-                  <form action="carrito.php" method="POST" class="mt-auto">
+                  <form action="agregar_carrito.php" method="POST" class="mt-auto">
                     <input type="hidden" name="id" value="<?= $producto['id'] ?>">
                     <button type="submit" class="btn btn-success btn-sm">Comprar</button>
                   </form>
@@ -113,7 +107,7 @@ $productos = $stmt->fetchAll();
             </div>
           <?php endforeach; ?>
         <?php else: ?>
-          <p class="text-muted">No se encontraron productos con esos filtros.</p>
+          <p class="text-muted">No se encontraron videojuegos con esos filtros.</p>
         <?php endif; ?>
       </div>
 
