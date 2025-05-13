@@ -79,7 +79,7 @@ $productos = $stmt->fetchAll();
           <label for="precio" class="form-label">Precio máximo:</label>
           <input type="range" class="form-range" id="precio" name="precio" min="0" max="100" step="1"
                  value="<?= htmlspecialchars($precioMax ?: 100) ?>">
-          <span><?= htmlspecialchars($precioMax ?: 100) ?> €</span>
+          <span class="precio-valor"><?= htmlspecialchars($precioMax ?: 100) ?> €</span>
         </div>
 
         <button type="submit" class="btn btn-success">Aplicar Filtro</button>

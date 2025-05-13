@@ -1,20 +1,30 @@
-// llamadas a funciones
-
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
+  aplicarModoGuardado();           // ✅ Aplica el modo guardado desde localStorage
   activarBotonModoOscuro();
   activarAlertasDeCompra();
 });
 
+// ✅ Esta función aplica el modo oscuro si estaba guardado
+function aplicarModoGuardado() {
+  const modo = localStorage.getItem("modo");
+  const body = document.body;
+  const btnModo = document.getElementById("modo-toggle");
 
+  if (modo === "oscuro") {
+    body.classList.add("dark-mode");
+    if (btnModo) btnModo.textContent = "Modo Claro";
+  } else {
+    if (btnModo) btnModo.textContent = "Modo Oscuro";
+  }
+}
 
-// Activa el botón para alternar entre modo claro y oscuro
 function activarBotonModoOscuro() {
-  let btnModo = document.getElementById("modo-toggle");
-  let body = document.body;
+  const btnModo = document.getElementById("modo-toggle");
+  const body = document.body;
 
   if (btnModo) {
     btnModo.addEventListener("click", function () {
-      let oscuro = body.classList.contains("dark-mode");
+      const oscuro = body.classList.contains("dark-mode");
 
       if (oscuro) {
         body.classList.remove("dark-mode");
@@ -29,7 +39,7 @@ function activarBotonModoOscuro() {
   }
 }
 
-// muestra  alerta por pantalla al hacer clic en botones de compra/reserva
+// alerta al hacer clic en botones de compra
 function activarAlertasDeCompra() {
   let botones = document.querySelectorAll("form[action='carrito.php'] button.btn-success");
 
@@ -37,10 +47,9 @@ function activarAlertasDeCompra() {
     boton.addEventListener("click", function (e) {
       e.preventDefault();
       alert("¡Producto añadido al carrito!");
-      boton.closest("form").submit(); // ✅ permite que el formulario se envíe después del alert
+      boton.closest("form").submit();
     });
   });
 }
 
-
-
+ 

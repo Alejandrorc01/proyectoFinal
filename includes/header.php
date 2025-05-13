@@ -37,7 +37,7 @@ if (!isset($titulo)) {
           </ul>
 
           <!-- Buscador corregido -->
-          <form class="d-flex barrabusq" method="GET" action="/rodconale/pixeltec/buscar.php" role="search">
+          <form class="d-flex barrabusq" method="GET" action="buscar.php" role="search">
             <input class="form-control me-2" type="search" name="q" placeholder="Escribe un producto" />
             <button class="btn btn-outline-azul" type="submit">Buscar</button>
           </form>
