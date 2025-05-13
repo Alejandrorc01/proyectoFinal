@@ -11,10 +11,7 @@ $resultados = [];
 if ($termino !== '') {
     $terminoLike = '%' . $termino . '%';
     $stmt = $pdo->prepare("SELECT * FROM productos 
-                           WHERE nombre LIKE :termino 
-                              OR descripcion LIKE :termino 
-                              OR plataforma LIKE :termino 
-                              OR genero LIKE :termino");
+                           WHERE nombre LIKE :termino");
     $stmt->execute([':termino' => $terminoLike]);
     $resultados = $stmt->fetchAll();
 }
