@@ -311,3 +311,9 @@ footer {
     color: #000000 !important;
     font-weight: bold !important;
   }
+
+  body.dark-mode .form-label-login {
+    color: #ffffff !important;
+    font-weight: bold;
+  }
+  

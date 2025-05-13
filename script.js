@@ -1,10 +1,10 @@
  document.addEventListener("DOMContentLoaded", function () {
-  aplicarModoGuardado();           // ✅ Aplica el modo guardado desde localStorage
+  aplicarModoGuardado();           // Aplica el modo guardado desde localStorage
   activarBotonModoOscuro();
   activarAlertasDeCompra();
 });
 
-// ✅ Esta función aplica el modo oscuro si estaba guardado
+// Esta función aplica el modo oscuro si estaba guardado
 function aplicarModoGuardado() {
   const modo = localStorage.getItem("modo");
   const body = document.body;
@@ -51,5 +51,30 @@ function activarAlertasDeCompra() {
     });
   });
 }
+
+
+
+// opcion de mostrar contraseña en el registro
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("verPassword");
+  if (toggle) {
+    toggle.addEventListener("change", function () {
+      const campos = [
+        document.getElementById("password"),
+        document.getElementById("confirmar_password")
+      ];
+
+      campos.forEach(input => {
+        if (input) {
+          input.type = toggle.checked ? "text" : "password";
+        }
+      });
+    });
+  }
+});
+
+
+
+
 
  

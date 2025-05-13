@@ -30,9 +30,6 @@ if (!isset($titulo)) {
             <li class="nav-item"><a class="nav-link link" href="index.php">Inicio</a></li>
             <li class="nav-item"><a class="nav-link link" href="consolas.php">Consolas</a></li>
             <li class="nav-item"><a class="nav-link link" href="videojuegos.php">Videojuegos</a></li>
-            <li class="nav-item"><a class="nav-link link" href="#">Reservas</a></li>
-            <li class="nav-item"><a class="nav-link link" href="#">Ofertas</a></li>
-            <li class="nav-item"><a class="nav-link link" href="#">Otros</a></li>
             <button id="modo-toggle" class="btn btn-sm btn-outline-secondary ms-3">Modo Oscuro</button>
           </ul>
 
@@ -42,7 +39,14 @@ if (!isset($titulo)) {
             <button class="btn btn-outline-azul" type="submit">Buscar</button>
           </form>
 
-          <div><a class="carrito" href="carrito.php"><i class="fas fa-shopping-cart"></i></a></div>
+          <div class="d-flex align-items-center">
+          <a class="carrito" href="carrito.php">
+            <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: white;"></i>
+          </a>
+          <a href="login.php" class="ms-3">
+          <i class="fas fa-user-circle" style="font-size: 1.5rem; color: white;"></i>
+          </a>
+        </div>
         </div>
       </div>
     </nav>
