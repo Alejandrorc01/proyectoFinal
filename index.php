@@ -1,7 +1,21 @@
 <?php
+session_start(); // Muy importante si no se ha iniciado antes
 $titulo = "Inicio";
+
+// Mostrar mensaje de bienvenida si viene de login
+$mensaje_bienvenida = false;
+if (isset($_GET['login']) && isset($_SESSION['usuario'])) {
+    $mensaje_bienvenida = true;
+}
+
 include("includes/header.php");
 ?>
+
+<?php if ($mensaje_bienvenida): ?>
+  <div class="alert alert-success text-center" id="bienvenida">
+    ¡Hola, <?= htmlspecialchars($_SESSION['usuario']) ?>! Has iniciado sesión correctamente.
+  </div>
+<?php endif; ?>
 
 <div class="contenedorgeneral">
   <br />

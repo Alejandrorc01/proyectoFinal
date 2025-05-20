@@ -74,6 +74,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const bienvenida = document.getElementById("bienvenida");
+  if (bienvenida) {
+    setTimeout(() => {
+      bienvenida.style.display = "none";
+    }, 4000);
+  }
+});
+
+
+
 
 
 

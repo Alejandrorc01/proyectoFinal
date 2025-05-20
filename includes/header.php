@@ -2,7 +2,13 @@
 if (!isset($titulo)) {
   $titulo = "PixelTec";
 }
+
+// Iniciar sesión si aún no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,13 +46,32 @@ if (!isset($titulo)) {
           </form>
 
           <div class="d-flex align-items-center">
-          <a class="carrito" href="carrito.php">
-            <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: white;"></i>
-          </a>
-          <a href="login.php" class="ms-3">
-          <i class="fas fa-user-circle" style="font-size: 1.5rem; color: white;"></i>
-          </a>
-        </div>
+            <a class="carrito" href="carrito.php">
+              <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: white;"></i>
+            </a>
+
+            <div class="ms-3 dropdown">
+              <?php if (isset($_SESSION['usuario'])): ?>
+                <a class="icono-perfil dropdown-toggle activo"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fas fa-user-circle" style="font-size: 1.5rem; color: white;"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item text-danger" href="logout.php">Cerrar sesión</a></li>
+                </ul>
+              <?php else: ?>
+                <a class="icono-perfil" href="login.php">
+                  <i class="fas fa-user-circle" style="font-size: 1.5rem; color: white;"></i>
+                </a>
+              <?php endif; ?>
+            </div>
+          </div> <!-- 🔚 Fin d-flex align-items-center -->
+
+      </div>
+
         </div>
       </div>
     </nav>

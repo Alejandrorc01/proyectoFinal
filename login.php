@@ -1,5 +1,6 @@
 <?php
 session_start();
+$error = $_GET['error'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,6 +17,12 @@ session_start();
   <div class="container mt-5 contenedorgeneral p-4 rounded shadow">
     <h1 class="titulo text-center mb-4">Iniciar Sesión</h1>
 
+    <?php if ($error): ?>
+      <div class="alert alert-danger text-center">
+        <?= htmlspecialchars($error) ?>
+      </div>
+    <?php endif; ?>
+
     <form action="procesar_login.php" method="POST" class="mx-auto" style="max-width: 400px;">
       <div class="mb-3">
         <label for="usuario" class="form-label-login">Usuario</label>
@@ -26,7 +33,7 @@ session_start();
         <input type="password" class="form-control" id="password" name="password" required>
       </div>
       <button type="submit" class="btn btn-success w-100 mb-3">Entrar</button>
-        <a href="registro.php" class="btn btn-outline-azul w-100">¿No tienes cuenta? Regístrate</a>
+      <a href="registro.php" class="btn btn-outline-azul w-100">¿No tienes cuenta? Regístrate</a>
     </form>
   </div>
 
