@@ -23,9 +23,6 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
     <meta charset="UTF-8">
     <title>Pago con PayPal - PixelTec</title>
     <link rel="stylesheet" href="style.css">
-<!--     meter id de ClientID de paypal -->
-<!-- https://developer.paypal.com/dashboard/applications/sandbox -->
-<!-- https://developer.paypal.com/dashboard/accounts     (ver cuentas)-->
     <script src="https://www.paypal.com/sdk/js?client-id=AdilfXbL6CWsYxitboLzeZrbW7eHrCs1gHqZ1YdoRwgueMGyG3Wj6Pj5HuZe3CZZSN4RlnbvClA7h6zC&currency=EUR"></script>
 </head>
 <body>
@@ -39,20 +36,37 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
 
     <script>
         paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '<?= number_format($total, 2, '.', '') ?>'
-                        }
-                    }]
-                });
+            // Crear la orden
+            createOrder: async function(data, actions) {
+                try {
+                    return await actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: '<?= number_format($total, 2, '.', '') ?>'
+                            }
+                        }]
+                    });
+                } catch (err) {
+                    console.error("Error al crear la orden:", err);
+                }
             },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('Pago completado por: ' + details.payer.name.given_name);
+
+            // Capturar el pago cuando el comprador lo aprueba
+            onApprove: async function(data, actions) {
+                try {
+                    const details = await actions.order.capture();
+                    alert(' Pago completado por: ' + details.payer.name.given_name);
                     window.location.href = 'procesar_pago.php';
-                });
+                } catch (err) {
+                    console.error("Error al capturar el pago:", err);
+                    alert(" Hubo un error al procesar el pago.");
+                }
+            },
+
+            // Manejo de errores generales (opcional)
+            onError: function(err) {
+                console.error("Error general de PayPal:", err);
+                alert("Error en el proceso de pago. Inténtalo más tarde.");
             }
         }).render('#paypal-button-container');
     </script>
