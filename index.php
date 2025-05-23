@@ -113,7 +113,7 @@ include("includes/header.php");
   <!-- CTA final -->
   <div class="text-center mt-5">
     <h3>¿Quieres ver todo nuestro catálogo?</h3>
-    <a href="videojuegos.php" class="btn btn-dark btn-lg">Ir a todos los videojuegos</a>
+    <a id="gapfinal" href="videojuegos.php" class="btn btn-dark btn-lg">Ir a todos los videojuegos</a>
   </div>
 </div>
 
