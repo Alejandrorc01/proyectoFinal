@@ -37,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $genero,
                 $estado
             ]);
-            $mensaje = "✅ Producto añadido correctamente.";
+            $mensaje = "Producto añadido correctamente.";
         } else {
-            $mensaje = "❌ Error al subir la imagen.";
+            $mensaje = "Error al subir la imagen.";
         }
     } else {
-        $mensaje = "❌ Debes seleccionar una imagen.";
+        $mensaje = "Debes seleccionar una imagen.";
     }
 }
 ?>

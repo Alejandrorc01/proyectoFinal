@@ -68,7 +68,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </a>
               <?php endif; ?>
             </div>
-          </div> <!-- 🔚 Fin d-flex align-items-center -->
+          </div> <!-- Fin d-flex align-items-center -->
 
       </div>
 

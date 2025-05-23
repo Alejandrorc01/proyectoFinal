@@ -19,6 +19,11 @@
     box-shadow: 0 0 10px var(--primary-color);
   }
 
+  body.dark-mode .card .card-body {
+    color: white !important;
+  }
+  
+
 
   body,
   html {
