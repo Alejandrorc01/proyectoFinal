@@ -1,32 +1,34 @@
 <?php
-session_start();
-include("includes/header.php");
-include("includes/db.php");
+session_start(); // Inicia la sesión para acceder al carrito
+include("includes/header.php"); // Cabecera común
+include("includes/db.php"); // Conexión a la base de datos
 
-// Inicializar carrito
+// Si no existe el carrito, se inicializa como un array vacío
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
 }
 
-// Eliminar producto
+// Si se ha solicitado eliminar un producto
 if (isset($_GET['eliminar'])) {
     $idEliminar = (int)$_GET['eliminar'];
-    unset($_SESSION['carrito'][$idEliminar]);
-    header("Location: carrito.php");
+    unset($_SESSION['carrito'][$idEliminar]); // Elimina ese producto del carrito
+    header("Location: carrito.php"); // Redirige para evitar reenvío del formulario
     exit;
 }
 
-// Obtener productos
-$productos = [];
-$total = 0.0;
+// Inicializamos variables
+$productos = []; // Lista de productos a mostrar
+$total = 0.0;    // Total acumulado del carrito
 
+// Si el carrito tiene productos
 if (!empty($_SESSION['carrito'])) {
-    $ids = array_keys($_SESSION['carrito']);
-    $placeholders = implode(',', array_fill(0, count($ids), '?'));
+    $ids = array_keys($_SESSION['carrito']); // IDs de los productos en el carrito
+    $placeholders = implode(',', array_fill(0, count($ids), '?')); // Genera ?,?,? para la consulta
     $stmt = $pdo->prepare("SELECT * FROM productos WHERE id IN ($placeholders)");
-    $stmt->execute($ids);
+    $stmt->execute($ids); // Ejecuta consulta con los IDs
     $productosBD = $stmt->fetchAll();
 
+    // Calcula cantidades y subtotales
     foreach ($productosBD as $producto) {
         $cantidad = $_SESSION['carrito'][$producto['id']];
         $producto['cantidad'] = $cantidad;
@@ -37,14 +39,17 @@ if (!empty($_SESSION['carrito'])) {
 }
 ?>
 
+<!-- INTERFAZ DEL CARRITO -->
 <div class="container mt-5">
-  <h2>🛒 Tu carrito</h2>
+  <h2>Tu carrito</h2>
   <hr>
 
   <?php if (empty($productos)): ?>
+    <!-- Si no hay productos en el carrito -->
     <p class="text-muted">Tu carrito está vacío.</p>
     <a href="index.php" class="btn btn-primary">Volver a la tienda</a>
   <?php else: ?>
+    <!-- Tabla con productos del carrito -->
     <table class="table table-bordered">
       <thead class="table-light">
         <tr>
@@ -65,21 +70,25 @@ if (!empty($_SESSION['carrito'])) {
             <td><?= number_format($producto['precio'], 2) ?> €</td>
             <td><?= number_format($producto['subtotal'], 2) ?> €</td>
             <td>
+              <!-- Enlace para eliminar el producto del carrito -->
               <a href="carrito.php?eliminar=<?= $producto['id'] ?>" class="btn btn-sm btn-danger"
                  onclick="return confirm('¿Eliminar este producto del carrito?')">Eliminar</a>
             </td>
           </tr>
         <?php endforeach; ?>
+        <!-- Total de la compra -->
         <tr>
           <td colspan="4" class="text-end fw-bold">Total:</td>
           <td colspan="2"><strong><?= number_format($total, 2) ?> €</strong></td>
         </tr>
       </tbody>
     </table>
+
+    <!-- Botón para ir al checkout -->
     <div class="text-end">
       <a href="checkout.php" class="btn btn-success">Finalizar compra</a>
     </div>
   <?php endif; ?>
 </div>
 
-<?php include("includes/footer.php"); ?>
+<?php include("includes/footer.php"); // Pie de página común ?>

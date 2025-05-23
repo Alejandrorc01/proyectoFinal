@@ -1,15 +1,15 @@
 <?php
-session_start();
-include("includes/header.php");
-include("includes/db.php");
+session_start(); // Inicia sesión
+include("includes/header.php"); // Cabecera común
+include("includes/db.php"); // Conexión a la base de datos
 
-// Configuración de paginación
+// --- CONFIGURACIÓN DE PAGINACIÓN ---
 $productosPorPagina = 6;
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 if ($paginaActual < 1) $paginaActual = 1;
 $inicio = ($paginaActual - 1) * $productosPorPagina;
 
-// Filtros desde GET
+// --- FILTROS ---
 $plataforma = $_GET['plataforma'] ?? '';
 $estado = $_GET['estado'] ?? '';
 $precioMax = $_GET['precio'] ?? '';
@@ -17,6 +17,7 @@ $precioMax = $_GET['precio'] ?? '';
 $where = "categoria = 'consola'";
 $params = [];
 
+// Aplica filtros según lo seleccionado
 if ($plataforma && $plataforma !== 'Todas') {
     $where .= " AND plataforma = :plataforma";
     $params[':plataforma'] = $plataforma;
@@ -30,13 +31,13 @@ if (is_numeric($precioMax)) {
     $params[':precio'] = $precioMax;
 }
 
-// Total productos
+// --- CONSULTAS ---
 $totalStmt = $pdo->prepare("SELECT COUNT(*) FROM productos WHERE $where");
 $totalStmt->execute($params);
 $totalProductos = $totalStmt->fetchColumn();
 $totalPaginas = ceil($totalProductos / $productosPorPagina);
 
-// Productos paginados
+// Consulta productos con LIMIT
 $stmt = $pdo->prepare("SELECT * FROM productos WHERE $where LIMIT :inicio, :cantidad");
 foreach ($params as $key => $val) {
     $stmt->bindValue($key, $val);
@@ -47,12 +48,15 @@ $stmt->execute();
 $productos = $stmt->fetchAll();
 ?>
 
+<!-- HTML PARA MOSTRAR FILTROS Y RESULTADOS -->
 <div class="container mt-5">
   <div class="row">
-    <!-- Filtros -->
+
+    <!-- FILTROS -->
     <div class="col-md-4">
       <h3>Filtrar por:</h3>
       <form method="GET" action="" class="border p-3 rounded bg-light">
+        <!-- Plataforma -->
         <div class="mb-3">
           <label for="plataforma" class="form-label">Consola:</label>
           <select class="form-select" id="plataforma" name="plataforma">
@@ -64,6 +68,7 @@ $productos = $stmt->fetchAll();
           </select>
         </div>
 
+        <!-- Estado -->
         <div class="mb-3">
           <label for="estado" class="form-label">Estado:</label>
           <select class="form-select" id="estado" name="estado">
@@ -74,6 +79,7 @@ $productos = $stmt->fetchAll();
           </select>
         </div>
 
+        <!-- Precio -->
         <div class="mb-3">
           <label for="precio" class="form-label">Precio máximo:</label>
           <input type="range" class="form-range" id="precio" name="precio" min="0" max="1000" step="50"
@@ -85,7 +91,7 @@ $productos = $stmt->fetchAll();
       </form>
     </div>
 
-    <!-- Productos -->
+    <!-- RESULTADOS -->
     <div class="col-md-8">
       <h3>Consolas disponibles</h3>
       <div class="row">
@@ -110,7 +116,7 @@ $productos = $stmt->fetchAll();
         <?php endif; ?>
       </div>
 
-      <!-- Paginación -->
+      <!-- PAGINACIÓN -->
       <nav>
         <ul class="pagination justify-content-center mt-4">
           <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>

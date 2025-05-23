@@ -350,3 +350,18 @@ footer {
     margin-top: 20px;
     background-color: #00bcd4;
   }
+
+  #espacio{
+    margin: 50px;
+  }
+
+
+  #centradoLogin{
+
+    align-items: center;
+    width: 500px;
+  }
+
+  #debajoLogin{
+    height: 300px;
+  }

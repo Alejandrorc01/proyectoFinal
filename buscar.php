@@ -1,19 +1,22 @@
 <?php
-session_start();
-include("includes/header.php");
-include("includes/db.php");
+session_start(); // Inicia la sesión
+include("includes/header.php"); // Cabecera común
+include("includes/db.php"); // Conexión a la base de datos
 
-// Obtener término de búsqueda
+// Captura el término de búsqueda desde la URL (?q=...)
 $termino = trim($_GET['q'] ?? '');
 
 $resultados = [];
 
 if ($termino !== '') {
+    // Añade comodines % para la búsqueda con LIKE
     $terminoLike = '%' . $termino . '%';
+
+    // Busca productos cuyo nombre contenga el término
     $stmt = $pdo->prepare("SELECT * FROM productos 
                            WHERE nombre LIKE :termino");
     $stmt->execute([':termino' => $terminoLike]);
-    $resultados = $stmt->fetchAll();
+    $resultados = $stmt->fetchAll(); // Guarda resultados en un array
 }
 ?>
 
@@ -29,6 +32,7 @@ if ($termino !== '') {
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?= $producto['nombre'] ?></h5>
                             <p class="card-text"><?= number_format($producto['precio'], 2) ?> €</p>
+                            <!-- Botón para agregar al carrito -->
                             <form action="carrito.php" method="POST" class="mt-auto">
                                 <input type="hidden" name="id" value="<?= $producto['id'] ?>">
                                 <button type="submit" class="btn btn-success btn-sm">Comprar</button>
@@ -43,4 +47,4 @@ if ($termino !== '') {
     <?php endif; ?>
 </div>
 
-<?php include("includes/footer.php"); ?>
+<?php include("includes/footer.php"); // Pie de página común ?>

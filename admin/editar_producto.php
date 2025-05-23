@@ -1,20 +1,22 @@
 <?php
-session_start();
+session_start(); // Inicia la sesión
+
+// Verifica si el usuario es administrador
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
 }
 
-include("../includes/db.php");
+include("../includes/db.php"); // Conexión a la base de datos
 
-// Validar ID del producto
+// Verifica que se pase un ID válido
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("ID de producto no válido.");
 }
 
 $id = (int) $_GET['id'];
 
-// Obtener el producto actual
+// Obtener datos del producto desde la base de datos
 $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = ?");
 $stmt->execute([$id]);
 $producto = $stmt->fetch();
@@ -25,8 +27,9 @@ if (!$producto) {
 
 $mensaje = "";
 
-// Procesar actualización
+// Si se envía el formulario para actualizar
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recoge los datos del formulario
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
@@ -34,32 +37,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $plataforma = $_POST['plataforma'];
     $genero = $_POST['genero'];
     $estado = $_POST['estado'];
-    $nueva_imagen = $producto['imagen']; // por defecto, conserva la imagen actual
+    $nueva_imagen = $producto['imagen']; // por defecto conserva la imagen actual
 
-    // Si hay nueva imagen
+    // Si se ha subido una nueva imagen
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
         $carpeta = "../imagenesindex/";
         $nombreImagen = basename($_FILES['imagen']['name']);
         $ruta = $carpeta . $nombreImagen;
 
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) {
-            // Eliminar imagen anterior
+            // Elimina la imagen anterior si existe
             if (file_exists("../" . $producto['imagen'])) {
                 unlink("../" . $producto['imagen']);
             }
             $nueva_imagen = "imagenesindex/" . $nombreImagen;
         } else {
-            $mensaje = "❌ Error al subir la nueva imagen.";
+            $mensaje = "Error al subir la nueva imagen.";
         }
     }
 
-    // Actualizar producto en la base de datos
+    // Actualiza el producto en la base de datos
     $stmt = $pdo->prepare("UPDATE productos SET nombre = ?, descripcion = ?, precio = ?, imagen = ?, categoria = ?, plataforma = ?, genero = ?, estado = ? WHERE id = ?");
     $stmt->execute([$nombre, $descripcion, $precio, $nueva_imagen, $categoria, $plataforma, $genero, $estado, $id]);
 
-    $mensaje = "✅ Producto actualizado correctamente.";
+    $mensaje = "Producto actualizado correctamente.";
 
-    // Recargar los datos del producto actualizado
+    // Recarga los datos actualizados
     $stmt = $pdo->prepare("SELECT * FROM productos WHERE id = ?");
     $stmt->execute([$id]);
     $producto = $stmt->fetch();
@@ -73,6 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Editar Producto</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="p-4">
 <div class="container">
     <h1 class="mb-4">Editar producto: <?= htmlspecialchars($producto['nombre']) ?></h1>
@@ -81,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="alert alert-info"><?= $mensaje ?></div>
     <?php endif; ?>
 
+    <!-- Formulario para editar el producto -->
     <form method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Nombre</label>

@@ -1,13 +1,16 @@
 <?php
-session_start();
+session_start(); // Inicia la sesión
+
+// Asegura que solo el administrador puede acceder
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
 }
 
-include("../includes/db.php");
+include("../includes/db.php"); // Conexión a la base de datos
 $mensaje = "";
 
+// Si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
@@ -17,21 +20,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $genero = $_POST['genero'];
     $estado = $_POST['estado'];
 
-    // Subida de imagen
+    // Manejo de imagen
     if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
         $carpeta = "../imagenesindex/";
         $nombreImagen = basename($_FILES['imagen']['name']);
         $ruta = $carpeta . $nombreImagen;
 
+        // Mueve la imagen subida a la carpeta del servidor
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $ruta)) {
-            // Insertar producto en la base de datos
+            // Inserta el producto en la base de datos
             $stmt = $pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, imagen, categoria, plataforma, genero, estado)
                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([
                 $nombre,
                 $descripcion,
                 $precio,
-                'imagenesindex/' . $nombreImagen,
+                'imagenesindex/' . $nombreImagen, // ruta relativa
                 $categoria,
                 $plataforma,
                 $genero,
@@ -52,16 +56,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <title>Agregar Producto</title>
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="p-4">
   <div class="container">
     <h1 class="mb-4">Agregar nuevo producto</h1>
 
+    <!-- Muestra mensaje de confirmación o error -->
     <?php if ($mensaje): ?>
       <div class="alert alert-info"><?= $mensaje ?></div>
     <?php endif; ?>
 
+    <!-- Formulario para agregar producto -->
     <form method="POST" enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label">Nombre del producto</label>

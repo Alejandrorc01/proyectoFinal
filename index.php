@@ -1,17 +1,19 @@
 <?php
-session_start();
-$titulo = "Inicio";
-require_once "includes/db.php";
+session_start(); // Inicia la sesión para manejar variables de sesión
+$titulo = "Inicio"; // Establece el título de la página
+require_once "includes/db.php"; // Conexión a la base de datos
 
 $mensaje_bienvenida = false;
+// Verifica si el usuario ha iniciado sesión correctamente
 if (isset($_GET['login']) && isset($_SESSION['usuario'])) {
     $mensaje_bienvenida = true;
 }
 
-include("includes/header.php");
+include("includes/header.php"); // Incluye el encabezado común
 ?>
 
 <?php if ($mensaje_bienvenida): ?>
+  <!-- Mensaje de bienvenida que se muestra si el usuario ha iniciado sesión -->
   <div class="alert alert-success text-center" id="bienvenida">
     ¡Hola, <?= htmlspecialchars($_SESSION['usuario']) ?>! Has iniciado sesión correctamente.
   </div>
@@ -22,6 +24,7 @@ include("includes/header.php");
   <h1>Nuestros destacados</h1>
   <div class="row justify-content-center">
     <?php
+    // Se muestran los 3 productos más recientes
     $stmt = $pdo->query("SELECT * FROM productos ORDER BY id DESC LIMIT 3");
     while ($producto = $stmt->fetch()):
     ?>
@@ -43,7 +46,7 @@ include("includes/header.php");
     <?php endwhile; ?>
   </div>
 
-  <!-- Tarjetas de acceso directo -->
+  <!-- Tarjetas de acceso directo a otras secciones -->
   <div class="row justify-content-center mt-5">
     <div class="col-sm-12 col-md-6 col-lg-4 p-3">
       <a href="videojuegos.php" class="text-decoration-none">
@@ -69,7 +72,7 @@ include("includes/header.php");
     </div>
   </div>
 
-  <!-- Oferta destacada -->
+  <!-- Banner de oferta destacada -->
   <div id="banner" class="alert alert-warning text-center border border-white" role="alert"
        style="background-color: #198754; color: #fff">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -77,7 +80,7 @@ include("includes/header.php");
     <p class="mb-0">¡Descuento de un <strong>20%</strong> en la PS5 Slim!</p>
   </div>
 
-  <!-- Carrusel -->
+  <!-- Carrusel de imágenes -->
   <div class="container my-5">
     <div id="carouselExampleCaptions" class="carousel slide">
       <div class="carousel-indicators">
@@ -110,7 +113,7 @@ include("includes/header.php");
     </div>
   </div>
 
-  <!-- CTA final -->
+  <!-- Llamada a la acción final -->
   <div class="text-center mt-5">
     <h3>¿Quieres ver todo nuestro catálogo?</h3>
     <a id="gapfinal" href="videojuegos.php" class="btn btn-dark btn-lg">Ir a todos los videojuegos</a>
