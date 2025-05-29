@@ -19,7 +19,7 @@ include("includes/header.php"); // Incluye el encabezado común
   </div>
 <?php endif; ?>
 
-<div class="contenedorgeneral">
+<div class="contenedorgeneral index">
   <br />
   <h1>Nuestros destacados</h1>
   <div class="row justify-content-center">

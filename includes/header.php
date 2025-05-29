@@ -33,7 +33,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <link rel="shortcut icon" href="imagenesindex/logo.PNG" type="image/x-icon" />
 </head>
 
-<body>
+<body class="<?= $titulo === 'Inicio' ? 'index-page' : '' ?>">
   <header>
     <!-- NAVBAR PRINCIPAL -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary navegacion" data-bs-theme="dark">

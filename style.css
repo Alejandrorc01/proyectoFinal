@@ -1,229 +1,178 @@
-/*predeterminado*/
+/* VARIABLES */
 :root {
-    --primary-color: #0d6efd;
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --card-bg: #f8f9fa;
-  }
-
-  /*modo oscuro*/
-
-  body.dark-mode {
-    --background-color: #1e1f26;
-    --text-color: #dddddd;
-    --card-bg: #2c2f36;
-  }
-  
-  body.dark-mode .card {
-    border: 1px solid var(--primary-color);
-    box-shadow: 0 0 10px var(--primary-color);
-  }
-
-  body.dark-mode .card .card-body {
-    color: white !important;
-  }
-  
-
-
-  body,
-  html {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-.contenedorgeneral {
-  max-width: 1600px;
-  margin: 0 auto;
-  background-color: #959d993b;
+  --primary-color: #00bcd4;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f8f9fa;
+  --contenedor-bg: #f4f4f4; /* Blanco suave */
+  --anim1: #00bcd4;
+  --anim2: #e0f7fa;
+  --anim3: #b2ebf2;
 }
 
-.titulo {
-  font-size: 35px !important;
+body.dark-mode {
+  --background-color: #1e1f26;
+  --text-color: #dddddd;
+  --card-bg: #2c2f36;
+  --contenedor-bg: #121318; /* Mismo tono que el navbar oscuro */
+  --anim1: #121318;
+  --anim2: #00bcd4;
+  --anim3: #00bcd4;
 }
 
-/* fuente */
+/* ESTILO GLOBAL */
+html, body {
+  height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+}
 
+/* SOLO PARA INDEX.PHP: Fondo animado */
+body.index-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--anim1), var(--anim2), var(--anim3));
+  background-size: 300% 300%;
+  animation: fondoOndas 10s ease-in-out infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+@keyframes fondoOndas {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* FUENTES PERSONALIZADAS */
 @font-face {
   font-family: "Octosquares";
   src: url(fuentes/TT\ Octosquares\ Trial\ Medium.ttf);
 }
-
 @font-face {
   font-family: "game";
   src: url(fuentes/1up.ttf);
 }
 
-/* declaro el color verde que uso en toda la página */
-
-:root {
-  --primary-color: #00bcd4;
+/* CONTENEDOR GENERAL */
+.contenedorgeneral {
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: var(--contenedor-bg);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-/* Añado fuente */
-
+/* ESTILOS DE TEXTO Y ENCABEZADOS */
 header {
   font-family: "Octosquares";
 }
-
-h4,
-h5 {
+h1, h4, h5 {
   font-family: "Octosquares" !important;
+  text-align: center;
 }
-
+.titulo {
+  font-size: 35px !important;
+  color: var(--primary-color) !important;
+  font-family: "game" !important;
+}
 .link:hover {
   color: var(--primary-color) !important;
   font-family: "Octosquares" !important;
 }
 
-.titulo {
-  color: var(--primary-color) !important;
-  font-family: "game" !important;
-}
-
-/* ajusto los colores del carrusel y el banner  */
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: var(--primary-color) !important;
-}
-.alert.alert-warning {
-  background-color: var(--primary-color) !important;
-  color: #fff;
-  border-color: #fff;
-}
-
+/* CARRUSEL */
 #carouselExampleCaptions {
   max-width: 600px;
   margin: auto;
 }
-
 .carousel {
-  border: 2px solid rgba(124, 191, 160, 0.356);
+  border: 2px solid #00bcd4;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--primary-color) !important;
 }
 
-/* modifico la posición de la barra de búsqueda y su botón */
-
-.barrabusq {
-  padding-right: 1% !important;
+/* BANNER */
+.alert.alert-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important;
 }
 
-.precio {
-  font-size: 18px;
-  margin-top: 10px;
-  color: black;
+/* TARJETAS */
+.card {
+  border: 1px solid var(--primary-color);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+body.dark-mode .card {
+  box-shadow: 0 0 10px var(--primary-color);
+}
+body.dark-mode .card .card-body {
+  color: white !important;
 }
 
-#compralaya {
-  margin-top: 50%;
-  color: var(--primary-color) !important;
-  text-decoration: none;
-  font-size: 35px;
-}
-
-h1 {
-  text-align: center;
-  font-family: "Octosquares";
-}
-
-h5 {
-  text-align: center;
-  font-weight: bold;
-}
-
-/* modifico las tarjetas de videojuegos */
-
+/* TARJETAS PERSONALIZADAS */
 .f1tarjeta {
   width: 68%;
   margin-left: 18% !important;
 }
-
 .mariotarjeta {
   width: 42%;
   margin-left: 30% !important;
 }
-
 .textotarjetas {
   font-size: 20px;
   text-align: center;
 }
 
-footer {
-  font-size: 20px !important;
-}
-
-.footer-azul {
-    background-color: var(--primary-color) !important;
-    color: white;
-  }
-  .footer-azul a {
-    color: white;
-    text-decoration: none;
-  }
-  .footer-azul a:hover {
-    text-decoration: underline;
-    color: #cce5ff;
-  }
-  
-  body.dark-mode .footer-azul {
-    background-color: #121318;
-  }
-  
-
-/* footer enlaces */
-
-.h6footer:hover {
-  color: black;
-}
-
-/* color botones de redes en el footer */
-
-.redes {
+/* BOTONES */
+.btn-success {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
-
-.redes:hover {
-  background-color: black !important;
+.btn-success:hover {
+  background-color: #0097a7 !important;
+  border-color: #0097a7 !important;
+}
+.btn-outline-azul {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+.btn-outline-azul:hover {
+  background-color: var(--primary-color);
+  color: white;
 }
 
-/* estrellas de valoración */
-
-.estrellas {
-  color: rgb(131, 131, 19) !important;
-}
-
-/* reseñas de producto */
-
-.h5reseñas {
-  color: var(--primary-color) !important;
-}
-
-/* aquí cambio a verde la barra de filtro de precio */
-
-.custom-range-green::-webkit-slider-thumb {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-}
-
-.custom-range-green::-moz-range-thumb {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-}
-
-.custom-range-green::-ms-thumb {
-  background-color: var(--primary-color) !important;
-  border-color: var(--primary-color) !important;
-}
-
-/* botones de numeración de página */
-
+/* PAGINACIÓN */
 .botonesnum {
   display: flex !important;
   margin-left: 10%;
 }
-
-/* botones de paginación */
-
 .paginacion {
   display: flex;
   justify-content: center;
@@ -236,132 +185,125 @@ footer {
 .btn-toolbar .btn-outline-secondary.active,
 .btn-toolbar .btn-outline-secondary:hover {
   background-color: var(--primary-color);
-  border-color: var(--primary-color);
   color: white;
 }
 
-/*cambios en tarjetas*/
-.card {
- 
- 
-  border: 1px solid #00bcd4;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  
-    background-color: var(--card-bg);
-    color: var(--text-color);
-  
+/* FOOTER */
+.footer-azul {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+.footer-azul a {
+  color: white;
+  text-decoration: none;
+}
+.footer-azul a:hover {
+  text-decoration: underline;
+  color: #cce5ff;
+}
+body.dark-mode .footer-azul {
+  background-color: #121318;
+}
+.h6footer:hover {
+  color: black;
+}
+.redes {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+.redes:hover {
+  background-color: black !important;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 10px #00bcd4;
+/* FORMULARIOS Y LOGIN */
+#centradoLogin {
+  align-items: center;
+  width: 500px;
+}
+#debajoLogin {
+  height: 300px;
+}
+body.dark-mode label.form-label,
+body.dark-mode .form-label,
+body.dark-mode input[type="range"] + span {
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+body.dark-mode .form-label-login {
+  color: #ffffff !important;
+  font-weight: bold;
 }
 
-/*cambios en botones*/
-
-.btn-success {
-  background-color: #00bcd4 !important;
-  border-color: #00bcd4 !important;
-}
-
-.btn-success:hover {
-  background-color: #0097a7 !important;
-  border-color: #0097a7 !important;
-}
-
-/*cambios en el carrusel y el banner*/
-
-.alert.alert-warning {
-  background-color: #ffc107 !important;
-  color: #000 !important;
-}
-.carousel {
-  border: 2px solid #00bcd4;
-}
-
-/*carrito*/
-
+/* OTROS */
 .carrito i {
   color: white;
   font-size: 1.5rem;
   margin-left: 12px;
 }
-
 .carrito i:hover {
   color: var(--primary-color);
 }
-
-/*busqueda*/
-
-.btn-outline-azul {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-  
-  .btn-outline-azul:hover {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-
-  /*Modo oscuro label en negro */
-  body.dark-mode label.form-label,
-  body.dark-mode .form-label {
-    color: #000000 !important;
-    font-weight: bold !important;
-  }
-
-  body.dark-mode input[type="range"] + span {
-    color: #000000 !important;
-    font-weight: bold !important;
-  }
-
-  body.dark-mode .form-label-login {
-    color: #ffffff !important;
-    font-weight: bold;
-  }
-  
-
-  #bienvenida {
-    margin: 20px auto;
-    max-width: 800px;
-  }
-  
-  .icono-perfil i {
-    border-radius: 50%;
-    padding: 4px;
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-    color: white;
-  }
-  
-  .icono-perfil.activo i {
-    background-color: #00bcd4; /* Azul PixelTec */
-  }
-  
-  .nombre-usuario {
-    font-weight: bold;
-    color: var(--primary-color);
-  }
-  
-  #gapfinal {
-    margin-bottom: 50px;
-    margin-top: 20px;
-    background-color: #00bcd4;
-  }
-
-  #espacio{
-    margin: 50px;
-  }
+#bienvenida {
+  margin: 20px auto;
+  max-width: 800px;
+}
+.icono-perfil i {
+  border-radius: 50%;
+  padding: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+.icono-perfil.activo i {
+  background-color: var(--primary-color);
+}
+.nombre-usuario {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+#gapfinal {
+  margin: 50px 0;
+  background-color: var(--primary-color);
+}
+#espacio {
+  margin: 50px;
+}
+.h5reseñas {
+  color: var(--primary-color) !important;
+}
+.custom-range-green::-webkit-slider-thumb,
+.custom-range-green::-moz-range-thumb,
+.custom-range-green::-ms-thumb {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
 
 
-  #centradoLogin{
+body.index-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--anim1), var(--anim2), var(--anim3));
+  background-size: 300% 300%;
+  animation: fondoOndas 5s ease-in-out infinite;
+  opacity: 0,5;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
 
-    align-items: center;
-    width: 500px;
+/* Animación para el fondo */
+@keyframes fondoOndas {
+  0% {
+    background-position: 0% 50%;
   }
-
-  #debajoLogin{
-    height: 300px;
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
