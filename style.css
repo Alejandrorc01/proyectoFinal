@@ -1,26 +1,27 @@
 /* VARIABLES */
 :root {
-  --primary-color: #00bcd4;
-  --background-color: #ffffff;
-  --text-color: #000000;
-  --card-bg: #f8f9fa;
-  --contenedor-bg: #f4f4f4; /* Blanco suave */
-  --anim1: #00bcd4;
+  --primary-color: #00bcd4; /* Color azul principal */
+  --background-color: #ffffff; /* Color de fondo claro */
+  --text-color: #000000; /* Color del texto en modo claro */
+  --card-bg: #f8f9fa; /* Fondo de tarjetas en modo claro */
+  --contenedor-bg: #f4f4f4; /* Fondo del contenedor general */
+  --anim1: #00bcd4; /* Colores para fondo animado */
   --anim2: #e0f7fa;
   --anim3: #b2ebf2;
 }
 
+/* Variables reescritas en modo oscuro */
 body.dark-mode {
   --background-color: #1e1f26;
   --text-color: #dddddd;
   --card-bg: #2c2f36;
-  --contenedor-bg: #121318; /* Mismo tono que el navbar oscuro */
+  --contenedor-bg: #121318;
   --anim1: #121318;
   --anim2: #00bcd4;
   --anim3: #00bcd4;
 }
 
-/* ESTILO GLOBAL */
+/* ESTILO GENERAL */
 html, body {
   height: 100%;
   background-color: var(--background-color);
@@ -32,7 +33,7 @@ html, body {
   z-index: 0;
 }
 
-/* SOLO PARA INDEX.PHP: Fondo animado */
+/* Fondo animado solo para la página de inicio */
 body.index-page::before {
   content: "";
   position: fixed;
@@ -49,16 +50,11 @@ body.index-page::before {
   transition: background 0.4s ease;
 }
 
+/* Animación del fondo */
 @keyframes fondoOndas {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* FUENTES PERSONALIZADAS */
@@ -71,7 +67,7 @@ body.index-page::before {
   src: url(fuentes/1up.ttf);
 }
 
-/* CONTENEDOR GENERAL */
+/* CONTENEDOR PRINCIPAL */
 .contenedorgeneral {
   max-width: 1600px;
   margin: 0 auto;
@@ -81,10 +77,8 @@ body.index-page::before {
   border-radius: 8px;
 }
 
-/* ESTILOS DE TEXTO Y ENCABEZADOS */
-header {
-  font-family: "Octosquares";
-}
+/* TEXTOS Y TÍTULOS */
+header { font-family: "Octosquares"; }
 h1, h4, h5 {
   font-family: "Octosquares" !important;
   text-align: center;
@@ -100,19 +94,14 @@ h1, h4, h5 {
 }
 
 /* CARRUSEL */
-#carouselExampleCaptions {
-  max-width: 600px;
-  margin: auto;
-}
-.carousel {
-  border: 2px solid #00bcd4;
-}
+#carouselExampleCaptions { max-width: 600px; margin: auto; }
+.carousel { border: 2px solid #00bcd4; }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: var(--primary-color) !important;
 }
 
-/* BANNER */
+/* BANNER DE AVISO */
 .alert.alert-warning {
   background-color: #ffc107 !important;
   color: #000 !important;
@@ -137,18 +126,9 @@ body.dark-mode .card .card-body {
 }
 
 /* TARJETAS PERSONALIZADAS */
-.f1tarjeta {
-  width: 68%;
-  margin-left: 18% !important;
-}
-.mariotarjeta {
-  width: 42%;
-  margin-left: 30% !important;
-}
-.textotarjetas {
-  font-size: 20px;
-  text-align: center;
-}
+.f1tarjeta { width: 68%; margin-left: 18% !important; }
+.mariotarjeta { width: 42%; margin-left: 30% !important; }
+.textotarjetas { font-size: 20px; text-align: center; }
 
 /* BOTONES */
 .btn-success {
@@ -169,15 +149,8 @@ body.dark-mode .card .card-body {
 }
 
 /* PAGINACIÓN */
-.botonesnum {
-  display: flex !important;
-  margin-left: 10%;
-}
-.paginacion {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+.botonesnum { display: flex !important; margin-left: 10%; }
+.paginacion { display: flex; justify-content: center; margin-top: 20px; }
 .btn-toolbar .btn-outline-secondary {
   color: var(--primary-color);
   border-color: var(--primary-color);
@@ -188,7 +161,7 @@ body.dark-mode .card .card-body {
   color: white;
 }
 
-/* FOOTER */
+/* PIE DE PÁGINA */
 .footer-azul {
   background-color: var(--primary-color) !important;
   color: white;
@@ -201,28 +174,17 @@ body.dark-mode .card .card-body {
   text-decoration: underline;
   color: #cce5ff;
 }
-body.dark-mode .footer-azul {
-  background-color: #121318;
-}
-.h6footer:hover {
-  color: black;
-}
+body.dark-mode .footer-azul { background-color: #121318; }
+.h6footer:hover { color: black; }
 .redes {
   background-color: var(--primary-color) !important;
   border-color: var(--primary-color) !important;
 }
-.redes:hover {
-  background-color: black !important;
-}
+.redes:hover { background-color: black !important; }
 
-/* FORMULARIOS Y LOGIN */
-#centradoLogin {
-  align-items: center;
-  width: 500px;
-}
-#debajoLogin {
-  height: 300px;
-}
+/* LOGIN Y FORMULARIOS */
+#centradoLogin { align-items: center; width: 500px; }
+#debajoLogin { height: 300px; }
 body.dark-mode label.form-label,
 body.dark-mode .form-label,
 body.dark-mode input[type="range"] + span {
@@ -234,19 +196,14 @@ body.dark-mode .form-label-login {
   font-weight: bold;
 }
 
-/* OTROS */
+/* ICONOS Y OTROS */
 .carrito i {
   color: white;
   font-size: 1.5rem;
   margin-left: 12px;
 }
-.carrito i:hover {
-  color: var(--primary-color);
-}
-#bienvenida {
-  margin: 20px auto;
-  max-width: 800px;
-}
+.carrito i:hover { color: var(--primary-color); }
+#bienvenida { margin: 20px auto; max-width: 800px; }
 .icono-perfil i {
   border-radius: 50%;
   padding: 4px;
@@ -261,16 +218,9 @@ body.dark-mode .form-label-login {
   font-weight: bold;
   color: var(--primary-color);
 }
-#gapfinal {
-  margin: 50px 0;
-  background-color: var(--primary-color);
-}
-#espacio {
-  margin: 50px;
-}
-.h5reseñas {
-  color: var(--primary-color) !important;
-}
+#gapfinal { margin: 50px 0; background-color: var(--primary-color); }
+#espacio { margin: 50px; }
+.h5reseñas { color: var(--primary-color) !important; }
 .custom-range-green::-webkit-slider-thumb,
 .custom-range-green::-moz-range-thumb,
 .custom-range-green::-ms-thumb {
@@ -278,61 +228,30 @@ body.dark-mode .form-label-login {
   border-color: var(--primary-color) !important;
 }
 
-
-body.index-page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: linear-gradient(135deg, var(--anim1), var(--anim2), var(--anim3));
-  background-size: 300% 300%;
-  animation: fondoOndas 5s ease-in-out infinite;
-  opacity: 0,5;
-  pointer-events: none;
-  transition: background 0.4s ease;
-}
-
-/* Animación para el fondo */
-@keyframes fondoOndas {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-
+/* ESTILOS DE PAGINACIÓN PERSONALIZADOS */
 .pagination .page-link {
-    color:  #00bcd4;
-    border: 1px solid  #00bcd4;
-    background-color: white;
+  color: #00bcd4;
+  border: 1px solid #00bcd4;
+  background-color: white;
 }
-
 .pagination .page-link:hover {
-    background-color: #00bcd4;
-    color: white;
-    border-color:  #00bcd4;
+  background-color: #00bcd4;
+  color: white;
+  border-color: #00bcd4;
 }
-
 .pagination .page-item.active .page-link {
-    background-color:  #00bcd4;
-    border-color:  #00bcd4;
-    color: white;
+  background-color: #00bcd4;
+  border-color: #00bcd4;
+  color: white;
 }
 
-
+/* PAYPAL */
 #paypal-button-container {
-    max-width: 400px;
-    width: 100%;
+  max-width: 400px;
+  width: 100%;
 }
 
+/* FILA FINAL DE TABLA (por ejemplo total del carrito) */
 tr:last-child {
   background-color: #e6f0ff;
   font-weight: bold;

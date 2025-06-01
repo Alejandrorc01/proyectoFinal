@@ -8,10 +8,13 @@ if (!isset($titulo)) {
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
+
+$contador = array_sum($_SESSION['carrito'] ?? []);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  
+
   <!-- Font Awesome para iconos -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" />
 
@@ -64,9 +67,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
           <!-- Iconos de carrito y perfil -->
           <div class="d-flex align-items-center">
-            <!-- Icono del carrito -->
-            <a class="carrito" href="carrito.php">
+            <!-- Icono del carrito con contador -->
+            <a class="carrito position-relative me-2" href="carrito.php">
               <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: white;"></i>
+              <?php if ($contador > 0): ?>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <?= $contador ?>
+                </span>
+              <?php endif; ?>
             </a>
 
             <!-- Menú de usuario (dependiendo si está logueado o no) -->
@@ -74,10 +82,10 @@ if (session_status() === PHP_SESSION_NONE) {
               <?php if (isset($_SESSION['usuario'])): ?>
                 <!-- Icono con menú desplegable si está logueado -->
                 <a class="icono-perfil dropdown-toggle activo"
-                   href="#"
-                   role="button"
-                   data-bs-toggle="dropdown"
-                   aria-expanded="false">
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
                   <i class="fas fa-user-circle" style="font-size: 1.5rem; color: white;"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
