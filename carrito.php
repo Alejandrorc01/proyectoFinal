@@ -16,6 +16,23 @@ if (isset($_GET['eliminar'])) {
     exit;
 }
 
+// Si se ha solicitado modificar la cantidad
+if (isset($_GET['modificar']) && isset($_GET['id'])) {
+    $id = (int)$_GET['id'];
+    if (isset($_SESSION['carrito'][$id])) {
+        if ($_GET['modificar'] === 'sumar') {
+            $_SESSION['carrito'][$id]++;
+        } elseif ($_GET['modificar'] === 'restar') {
+            $_SESSION['carrito'][$id]--;
+            if ($_SESSION['carrito'][$id] <= 0) {
+                unset($_SESSION['carrito'][$id]);
+            }
+        }
+    }
+    header("Location: carrito.php");
+    exit;
+}
+
 // Inicializamos variables
 $productos = []; // Lista de productos a mostrar
 $total = 0.0;    // Total acumulado del carrito
@@ -45,12 +62,10 @@ if (!empty($_SESSION['carrito'])) {
   <hr>
 
   <?php if (empty($productos)): ?>
-    <!-- Si no hay productos en el carrito -->
     <p class="text-muted">Tu carrito está vacío.</p>
     <a href="index.php" class="btn btn-primary">Volver a la tienda</a>
   <?php else: ?>
-    <!-- Tabla con productos del carrito -->
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center align-middle">
       <thead class="table-light">
         <tr>
           <th>Imagen</th>
@@ -66,17 +81,19 @@ if (!empty($_SESSION['carrito'])) {
           <tr>
             <td><img src="<?= $producto['imagen'] ?>" width="60"></td>
             <td><?= htmlspecialchars($producto['nombre']) ?></td>
-            <td><?= $producto['cantidad'] ?></td>
+            <td>
+              <a href="carrito.php?modificar=restar&id=<?= $producto['id'] ?>" class="btn btn-sm btn-outline-secondary">-</a>
+              <span class="mx-2"><?= $producto['cantidad'] ?></span>
+              <a href="carrito.php?modificar=sumar&id=<?= $producto['id'] ?>" class="btn btn-sm btn-outline-secondary">+</a>
+            </td>
             <td><?= number_format($producto['precio'], 2) ?> €</td>
             <td><?= number_format($producto['subtotal'], 2) ?> €</td>
             <td>
-              <!-- Enlace para eliminar el producto del carrito -->
               <a href="carrito.php?eliminar=<?= $producto['id'] ?>" class="btn btn-sm btn-danger"
                  onclick="return confirm('¿Eliminar este producto del carrito?')">Eliminar</a>
             </td>
           </tr>
         <?php endforeach; ?>
-        <!-- Total de la compra -->
         <tr>
           <td colspan="4" class="text-end fw-bold">Total:</td>
           <td colspan="2"><strong><?= number_format($total, 2) ?> €</strong></td>
@@ -84,11 +101,10 @@ if (!empty($_SESSION['carrito'])) {
       </tbody>
     </table>
 
-    <!-- Botón para ir al checkout -->
     <div class="text-end">
       <a href="checkout.php" class="btn btn-success">Finalizar compra</a>
     </div>
   <?php endif; ?>
 </div>
 
-<?php include("includes/footer.php"); // Pie de página común ?>
+<?php include("includes/footer.php"); ?>

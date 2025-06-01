@@ -19,6 +19,7 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Pago con PayPal - PixelTec</title>
@@ -28,14 +29,17 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
 </head>
 
 <body>
-    <?php include "includes/header.php"; // Cabecera común ?>
+    <?php include "includes/header.php"; // Cabecera común 
+    ?>
 
-    <div class="container mt-5">
-        <h2 class="titulo">Finalizar compra con PayPal</h2>
-        <p><strong>Total a pagar:</strong> <?= number_format($total, 2) ?> €</p>
-        <!-- Contenedor donde se dibujará el botón de PayPal -->
-        <div id="paypal-button-container"></div>
+    <div class="container mt-5 d-flex flex-column align-items-center">
+        <h2 class="titulo text-center mb-3">Finalizar compra con PayPal</h2>
+        <p class="text-center"><strong>Total a pagar:</strong> <?= number_format($total, 2) ?> €</p>
+        <div id="paypal-button-container" style="max-width: 400px; width: 100%;"></div>
     </div>
+
+
+
 
     <script>
         // Configuración del botón de PayPal
@@ -95,4 +99,5 @@ foreach ($_SESSION['carrito'] as $id => $cantidad) {
 
     <?php include "includes/footer.php"; ?>
 </body>
+
 </html>

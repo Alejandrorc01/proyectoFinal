@@ -307,3 +307,33 @@ body.index-page::before {
     background-position: 0% 50%;
   }
 }
+
+
+.pagination .page-link {
+    color:  #00bcd4;
+    border: 1px solid  #00bcd4;
+    background-color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #00bcd4;
+    color: white;
+    border-color:  #00bcd4;
+}
+
+.pagination .page-item.active .page-link {
+    background-color:  #00bcd4;
+    border-color:  #00bcd4;
+    color: white;
+}
+
+
+#paypal-button-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+tr:last-child {
+  background-color: #e6f0ff;
+  font-weight: bold;
+}
