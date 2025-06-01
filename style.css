@@ -44,7 +44,7 @@ body.index-page::before {
   z-index: -1;
   background: linear-gradient(135deg, var(--anim1), var(--anim2), var(--anim3));
   background-size: 300% 300%;
-  animation: fondoOndas 10s ease-in-out infinite;
+  animation: fondoOndas 7s ease-in-out infinite;
   opacity: 0.3;
   pointer-events: none;
   transition: background 0.4s ease;
